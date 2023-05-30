@@ -1,5 +1,12 @@
+import ListePost from "./components/ListePost";
+import LoginPage from "./components/LoginPage";
+import BattleShipBoard from "./components/BattleShipBoard";
+
+
 function App() {
-  return <h1>Hello World!</h1>;
+  return (<main>
+    <BattleShipBoard/>
+    </main>);
 }
 
 export default App;
