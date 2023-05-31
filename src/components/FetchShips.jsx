@@ -12,6 +12,24 @@ const BattleShipBoard = ({ ships }) => {
     setBoard(newBoard);
   };
 
+  // Afficher les navires sur le tableau de bataille
+  const renderShips = () => {
+    return ships.map((ship) => {
+      const [row, col] = ship.Position;
+      const shipStyle = {
+        top: `${row * 40}px`,
+        left: `${col * 40}px`,
+      };
+      return (
+        <div
+          key={ship.Id}
+          className={`ship ${ship.Type}`}
+          style={shipStyle}
+        ></div>
+      );
+    });
+  };
+
   return (
     <div className="battle-ship-board">
       <div className="board-container">
@@ -20,12 +38,9 @@ const BattleShipBoard = ({ ships }) => {
             key={index}
             className={`cell ${isClicked ? 'clicked' : ''}`}
             onClick={() => handleClick(index)}
-          >
-            {ships.some((ship) => ship.position[0] === index % boardSize && ship.position[1] === Math.floor(index / boardSize)) ? (
-              <span className="ship-marker">X</span>
-            ) : null}
-          </div>
+          ></div>
         ))}
+        {renderShips()}
       </div>
     </div>
   );
